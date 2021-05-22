@@ -7,7 +7,7 @@ export default () => {
 				<Alert color = "primary">
 					Hello Project is strapi-next with Bootstrap
 				</Alert>
-				&nbsp; <Botton color = "primary">Hello from nextjs</Button>
+				&nbsp; <Button color = "primary">Hello from nextjs</Button>
 			</div>
 		</div>
 	);
