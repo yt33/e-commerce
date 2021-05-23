@@ -1,9 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "items",
+  "collectionName": "dishes",
   "info": {
-    "name": "Item",
-    "description": ""
+    "name": "dish"
   },
   "options": {
     "increments": true,
@@ -30,9 +29,12 @@
       "required": false,
       "pluginOptions": {}
     },
-    "dishes": {
-      "via": "item",
-      "collection": "dish"
+    "price": {
+      "type": "decimal"
+    },
+    "item": {
+      "model": "items",
+      "via": "dishes"
     }
   }
 }
