@@ -1,15 +1,18 @@
-/*
+/* /frontend/pages/_app.js
 
 This file will serve to override the default App.js used by Next
 and be rendered on each page, allowing us to set and manage global stypes and shared components in one place of the application.
 
+Wrap _app.js in withData call to give the components access to Apollo/GraphQL.
 */
+
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
 import Layout from "../components/Layout";
+import withData from "../lib/apollo";
 
-export default class MyApp extends App {
+class MyApp extends App {
 	render() {
 		const { Component, pageProps } = this.props;
 		return (
@@ -29,3 +32,5 @@ export default class MyApp extends App {
 		);
 	}
 }
+
+export default withData(MyApp);
