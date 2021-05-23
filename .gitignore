@@ -1,4 +1,7 @@
 *~
+*.un~
+*.swp
+*.swo
 node_modules
 .next
 set noundofile
