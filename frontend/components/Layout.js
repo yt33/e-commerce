@@ -74,6 +74,7 @@ const Layout = (props) => {
 							<Link href = "/login">
 								<a className = "nav-link">Sign In</a>
 							</Link>
+						)}
 					</NavItem>
 				</Nav>
 			</header>
