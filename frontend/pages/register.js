@@ -34,11 +34,11 @@ const Register = () => {
 							 error.message.map((error) => {
 								return (
 									<div
-										key = { error.message[0].id }
+										key = { error.messages[0].id }
 										style = {{ marginBottom: 10 }}
 									>
 										<small style = {{ color: "red" }}>
-											{ error.message[0].message }
+											{ error.messages[0].message }
 										</small>
 									</div>
 								);
