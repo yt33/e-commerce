@@ -1,10 +1,13 @@
 /* /frontend/pages/items.js 
 
 */
-
+import { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { useRouter } from "next/router";
 import { gql } from "apollo-boost";
+
+import Cart from "../components/cart";
+import AppContext from "../context/AppContext";
 
 import {
 	Button,
@@ -36,7 +39,8 @@ const GET_ITEM_DISHES = gql`
 `;
 
 
-function Items(props) {
+function Items() {
+	const appContext = useContext(AppContext);
 	const router = useRouter();
 	const { loading, error, data } = useQuery(GET_ITEM_DISHES, {
 		variables: { id: router.query.id },
@@ -65,7 +69,7 @@ function Items(props) {
 								</CardBody>
 				
 								<div className = "card-footer">
-									<Button outline color = "primary">
+									<Button outline color = "primary" onClick = { () => appContext.addItem(res) }>
 										+ Add To Card
 									</Button>
 		
@@ -93,6 +97,12 @@ function Items(props) {
 							</Card>
 						</Col>
 					))}
+
+					<Col xs = "3" style = {{ padding: 0 }}>
+						<div>
+							<Cart />
+						</div>
+					</Col>
 				</Row>
 			</>
 		);
