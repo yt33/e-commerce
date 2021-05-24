@@ -4,19 +4,63 @@ This file will serve to override the default App.js used by Next
 and be rendered on each page, allowing us to set and manage global stypes and shared components in one place of the application.
 
 Wrap _app.js in withData call to give the components access to Apollo/GraphQL.
+
+Add authentication state to _app.js to share across the application.
+
 */
 
 import React from "react";
 import App from "next/app";
 import Head from "next/head";
+import Cookie from "js-cookie";
+import fetch from "isomorphic-fetch";
 import Layout from "../components/Layout";
+import AppContext from "../context/AppContext";
 import withData from "../lib/apollo";
 
 class MyApp extends App {
+	state = {
+		user: null,
+	};
+
+	componentDidMount() {
+		// grab token value from cookie
+		const token = Cookie.get("token");
+
+		if(token) {
+			// authenticate the token on the server and place set user object
+			fetch(`${process.env.NEXT_PUBLIC_API_URL}user/me`, {
+				header: {
+					Authorization: `Bearer ${token}`,
+				},
+			}).then(async (res) => {
+				// if res comes back not valid, token is not valid
+				// delete the token and log the user out on client
+				if(!res.ok) {
+					Cookie.remove("token");
+					this.setState({ user: null });
+					return null;
+				}
+				const user = await res.json();
+				this.setUser(user);
+			});
+		}
+	}
+
+	setUser = (user) => {
+		this.setState({ user });
+	};
+
 	render() {
 		const { Component, pageProps } = this.props;
 		return (
-			<>
+			<AppContext.Provider
+				value = {{
+					user: this.state.user,
+					isAuthenticated: !!this.state.user,
+					setUser: this.setUser,
+				}}	
+			>
 				<Head>
 					<link
 						rel = "stylesheet"
@@ -28,7 +72,7 @@ class MyApp extends App {
 				<Layout>
 					<Component {...pageProps} />
 				</Layout>
-			</>
+			</AppContext.Provider>
 		);
 	}
 }
