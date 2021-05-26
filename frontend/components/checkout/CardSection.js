@@ -40,7 +40,9 @@ function CardSection(props) {
 		decline.onclick = function() {
 			modal.style.display = "none";
 		}
-
+		// subscribe.onclick = function() {
+		// 	appContext.clearItems();
+		// }
 		// when the user clicks anywhere outside of the modal, close it
 		window.onclick = function(event) {
 			if(event.target == modal) {
@@ -49,9 +51,7 @@ function CardSection(props) {
 		}
 
 		confirm.onclick = function() {
-			props.submitOrder;
 			box.style.display = "block";
-
 		}
 
 		confirmSpan.onclick = function() {
@@ -86,14 +86,23 @@ function CardSection(props) {
 									<div className = "modal-content">
 										<span className = "close">&times;</span>
 										<p>Are you sure you want to subscribe to this order and order every month automatically?</p>
-										<button id = "accept">Yes</button>
+										<button id = "accept" onClick = { props.submitOrder }>Yes</button>
+										{ props.stripeError ? (
+											<div>{ props.stripeError.toString() }</div>
+										) : (
+											<div><p>You have successfully subscribed to the order</p>
+												<Link href = "/">
+													<button id = "clearCart">Back to Home</button>
+												</Link>
+											</div>
+										)}
 										<button id = "decline">No</button>
 									</div>
 								</div>
+							
 							<button className = "order-button-wrapper" id = "confirmBtn" onClick = { props.submitOrder }>Confirm order</button>
-
 							{ props.stripeError ? (
-								<div>{ props.stripError.toString() }</div>
+								<div>{ props.stripeError.toString() }</div>
 							) : (
 								<div id = "myBox" class = "box">
 									<div className = "box-content">
@@ -101,7 +110,6 @@ function CardSection(props) {
 										<p>You have successfully placed the order</p>
 										<Link href = "/">
 											<button id = "clearCart">Back to Home</button>
-											
 										</Link>
 									</div>
 								</div>
