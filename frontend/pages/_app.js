@@ -66,14 +66,14 @@ class MyApp extends App {
 	};
 
 	clearItems = (user) => {
-		this.setState({ user });
-		// let { items } = this.state.cart;
-		// this.setState(
-		// 	{ 
-		// 		cart: { items: [], total: 0, },
-		// 	},
-		// 	() => Cookie.set("cart", this.state.cart.items)
-		// );
+		// this.setState({ user });
+		let { items } = this.state.cart;
+		this.setState(
+			{ 
+				cart: { items: [], total: 0, },
+			},
+			() => Cookie.set("cart", this.state.cart.items)
+		);
 	};
 
 	addItem = (item) => {
