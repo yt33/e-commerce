@@ -65,6 +65,17 @@ class MyApp extends App {
 		this.setState({ user });
 	};
 
+	clearItems = (user) => {
+		this.setState({ user });
+		// let { items } = this.state.cart;
+		// this.setState(
+		// 	{ 
+		// 		cart: { items: [], total: 0, },
+		// 	},
+		// 	() => Cookie.set("cart", this.state.cart.items)
+		// );
+	};
+
 	addItem = (item) => {
 		let { items } = this.state.cart;
 		//check for item already in cart
@@ -143,6 +154,7 @@ class MyApp extends App {
 					cart: this.state.cart,
 					addItem: this.addItem,
 					removeItem: this.removeItem,
+					clearItems: this.clearItems,
 				}}	
 			>
 				<Head>
