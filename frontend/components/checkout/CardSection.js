@@ -21,12 +21,14 @@ function CardSection(props) {
 		const span = document.getElementsByClassName("close")[0];
 		const decline = document.getElementById("decline");
 		const subscribe = document.getElementById("accept");
+		const sub = document.getElementById("mySub");
+		const clear = document.getElementById("clearCart");
 
 		// when use click "confirm order"
 		const box = document.getElementById("myBox");
 		const confirm = document.getElementById("confirmBtn");
-		const confirmSpan = document.getElementsByClassName("confirmClose")[0];
-		const clear = document.getElementById("clearCart");
+		// const confirmSpan = document.getElementsByClassName("confirmClose")[0];
+		const clr = document.getElementById("myClearCart");
 
 		// when the user clickks the button, open the modal
 		btn.onclick = function() {
@@ -40,9 +42,12 @@ function CardSection(props) {
 		decline.onclick = function() {
 			modal.style.display = "none";
 		}
-		// subscribe.onclick = function() {
-		// 	appContext.clearItems();
-		// }
+		subscribe.onclick = function() {
+			sub.style.display = "block";
+			// modal.style.display = "none";
+			props.submitOrder();
+			if(props.stripeError) props.stripeError.toString();
+		}
 		// when the user clicks anywhere outside of the modal, close it
 		window.onclick = function(event) {
 			if(event.target == modal) {
@@ -52,13 +57,19 @@ function CardSection(props) {
 
 		confirm.onclick = function() {
 			box.style.display = "block";
+			props.submitOrder();
+			if(props.stripeError) props.stripeError.toString();
 		}
 
-		confirmSpan.onclick = function() {
-			box.style.display = "none";
-		}
+		// confirmSpan.onclick = function() {
+		// 	box.style.display = "none";
+		// }
 
-		clearCart.onclick = function() {
+		clear.onclick = function() {
+			appContext.clearItems();
+		}
+		
+		clr.onclick = function() {
 			appContext.clearItems();
 		}
 	}
@@ -82,38 +93,34 @@ function CardSection(props) {
 							<br />
 
 							<button className = "order-button" id = "myBtn">Confirm & Subscribe</button>
-								<div id = "myModal" class = "modal">
-									<div className = "modal-content">
-										<span className = "close">&times;</span>
+								<div id = "myModal" className = "modal">
+									<div class = "modal-content">
+										<span class = "close">&times;</span>
 										<p>Are you sure you want to subscribe to this order and order every month automatically?</p>
-										<button id = "accept" onClick = { props.submitOrder }>Yes</button>
-										{ props.stripeError ? (
-											<div>{ props.stripeError.toString() }</div>
-										) : (
-											<div><p>You have successfully subscribed to the order</p>
-												<Link href = "/">
-													<button id = "clearCart">Back to Home</button>
-												</Link>
+										<button id = "accept">Yes</button>
+											<div id = "mySub" className = "sub">
+												<div class = "sub-content">
+													<p>You have successfully subscribed to the order</p>
+													<Link href = "/">
+														<button id = "clearCart">Back to Home</button>
+													</Link>
+												</div>
 											</div>
-										)}
+										
 										<button id = "decline">No</button>
 									</div>
 								</div>
 							
-							<button className = "order-button-wrapper" id = "confirmBtn" onClick = { props.submitOrder }>Confirm order</button>
-							{ props.stripeError ? (
-								<div>{ props.stripeError.toString() }</div>
-							) : (
-								<div id = "myBox" class = "box">
-									<div className = "box-content">
-										<span className = "confirmClose">&times;</span>
+							<button className = "order-button-wrapper" id = "confirmBtn">Confirm order</button>
+								<div id = "myBox" className = "box">
+									<div class = "box-content">
 										<p>You have successfully placed the order</p>
 										<Link href = "/">
-											<button id = "clearCart">Back to Home</button>
+											<button id = "myClearCart">Back to Home</button>
 										</Link>
 									</div>
 								</div>
-							)}
+							
 							<div id = "card-errors" role = "alert" />
 						</div>
 					</fieldset>
@@ -136,8 +143,9 @@ function CardSection(props) {
 					}
 					/* the modal (background) */
 					.modal, 
-					.box {
-						display: none !important;
+					.box,
+					.sub {
+						display: none;
 						position: fixed;
 						z-index: 1;
 						padding-top: 100px;
@@ -152,7 +160,8 @@ function CardSection(props) {
 
 					/* modal content */
 					.modal-content, 
-					.box-content {
+					.box-content,
+					.sub-content {
 						background-color: #fefefe;
 						margin: auto;
 						padding: 20px;
