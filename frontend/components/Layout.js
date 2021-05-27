@@ -1,7 +1,7 @@
 /* /components/Layout.js */
 
 import React, { useContext } from "react";
-import Head from "next/head";
+import Head from "next/head"; 
 import Link from "next/link";
 import { Container, Nav, NavItem } from "reactstrap";
 import { logout } from "../lib/auth";
