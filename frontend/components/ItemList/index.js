@@ -1,5 +1,5 @@
 /* /frontend/components/ItemList/index.js
-
+ 
 */
 
 import { useQuery } from "@apollo/react-hooks";
