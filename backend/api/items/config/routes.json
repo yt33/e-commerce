@@ -46,7 +46,7 @@
       "handler": "items.delete",
       "config": {
         "policies": []
-      }
+      } 
     }
   ]
 }
