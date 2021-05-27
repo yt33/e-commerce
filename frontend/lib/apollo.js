@@ -1,4 +1,4 @@
-/* /frontend/lib/apollo.js
+/* /frontend/lib/apollo.js 
 
 Connect the application with GraphQL using Apollo and 
 the next-apollo implementation to wrap the components
