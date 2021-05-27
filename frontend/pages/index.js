@@ -2,7 +2,7 @@
 
 Update home route to display the Item list and a search bar to filter the items
 */
-
+ 
 import React, { useState } from "react";
 
 import { Col, Input, InputGroup, InputGroupAddon, Row } from "reactstrap";
