@@ -2,17 +2,22 @@
 ```
 git clone "https://github.com/yt33/e-commerce.git"
 ```
-2. Install yarn if you haven't
+2. Install yarn if you haven't 
 ```
 npm install
 ```
-3. go to /backend and start strapi
+3. Install MongoDB if you haven't
 ```
-yarn develop
+$ brew tap mongodb/brew
+$ brew install mongodb-community@4.2
 ```
-4. open another window and go to /frontend and start the local dev server
+4. go to /backend and start strapi
 ```
-yarn dev
+$ yarn develop
+```
+5. open another window and go to /frontend and start the local dev server
+```
+$ yarn dev
 ```
 
 Now you can go to `localhost:3000` to view the page, and go to `localhost:1337` with the following credential to view Strapi management center
