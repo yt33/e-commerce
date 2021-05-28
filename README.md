@@ -6,7 +6,7 @@ git clone "https://github.com/yt33/e-commerce.git"
 ```
 npm install
 ```
-3. Install MongoDB if you haven't
+3. Install MongoDB (in /backend) if you haven't
 ```
 brew tap mongodb/brew
 brew install mongodb-community@4.2
@@ -20,7 +20,13 @@ Start the mongo server
 ```
 brew services start mongodb-community@4.2
 ```
-4. go to /backend and start strapi
+4. Install axios, js-cookie, isomorphic-fetch in /frontend
+```
+npm install axios --save
+npm install isomorphic-fetch --save
+npm install js-cookie --save
+```
+6. go to /backend and start strapi
 ```
 $ yarn develop
 ```
