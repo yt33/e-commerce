@@ -29,8 +29,6 @@ $ yarn develop
 $ yarn dev
 ```
 
-Now you can go to `localhost:3000` to view the page, and go to `localhost:1337` with the following credential to view Strapi management center
-Username: yli926@outlook.com
-Password: rhubVZW@SApv9r8
+Now you can go to `localhost:3000` to view the page, and go to `localhost:1337` to view the strapi management center
 
 link to see a demo: https://drive.google.com/file/d/1aTBabIKssucUnUHk8ZhpJgOqKZoHGDjl/view?usp=sharing
