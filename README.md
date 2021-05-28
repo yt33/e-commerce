@@ -20,7 +20,7 @@ brew services start mongodb-community@4.2
 ```
 start strapi
 ```
-$ yarn develop
+yarn develop
 ```
 # in /frontend
 Install yarn if you haven't 
