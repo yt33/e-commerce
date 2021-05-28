@@ -20,11 +20,12 @@ Start the mongo server
 ```
 brew services start mongodb-community@4.2
 ```
-4. Install axios, js-cookie, isomorphic-fetch in /frontend
+4. Install axios, js-cookie, isomorphic-fetch, apollo in /frontend
 ```
 npm install axios --save
 npm install isomorphic-fetch --save
 npm install js-cookie --save
+npm install -D apollo
 ```
 6. go to /backend and start strapi
 ```
