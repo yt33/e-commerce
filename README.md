@@ -27,12 +27,11 @@ Install yarn if you haven't
 ```
 npm install
 ```
-Install axios, js-cookie, isomorphic-fetch, apollo
+Install axios, js-cookie, isomorphic-fetch
 ```
 npm install axios --save
 npm install isomorphic-fetch --save
 npm install js-cookie --save
-npm install -D apollo
 ```
 start the local dev server
 ```
