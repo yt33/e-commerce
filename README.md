@@ -8,11 +8,11 @@ npm install
 ```
 3. go to /backend and start strapi
 ```
-$ yarn develop
+yarn develop
 ```
 4. open another window and go to /frontend and start the local dev server
 ```
-$ yarn dev
+yarn dev
 ```
 
 Now you can go to `localhost:3000` to view the page, and go to `localhost:1337` with the following credential to view Strapi management center
