@@ -15,6 +15,11 @@ If you don't have Git already installed in PATH (if you see this error "Error: G
 ```
 xcode-select --install
 ```
+Then you can install MongoDB.
+Start the mongo server
+```
+brew services start mongodb-community@4.2
+```
 4. go to /backend and start strapi
 ```
 $ yarn develop
