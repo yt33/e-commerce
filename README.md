@@ -8,8 +8,12 @@ npm install
 ```
 3. Install MongoDB if you haven't
 ```
-$ brew tap mongodb/brew
-$ brew install mongodb-community@4.2
+brew tap mongodb/brew
+brew install mongodb-community@4.2
+```
+If you don't have Git already installed in PATH (if you see this error "Error: Git must be installed and in your PATH!"), you can
+```
+xcode-select --install
 ```
 4. go to /backend and start strapi
 ```
